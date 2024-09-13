@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+
+public class StudentManager {
+
+    private ArrayList<String> students;
+
+    public StudentManager() {
+        students = new ArrayList<>();
+    }
+
+    public void addStudent(String studentName) {
+        students.add(studentName);
+    }
+
+    public void removeStudent(String studentName) {
+        students.remove(studentName);
+    }
+
+    public void displayStudents() {
+        if (students.isEmpty()) {
+            System.out.println("No students in the list.");
+        } else {
+            System.out.println("List of students:");
+            for (String student : students) {
+                System.out.println(student);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        StudentManager manager = new StudentManager();
+
+        manager.addStudent("Alice");
+        manager.addStudent("Bob");
+        manager.addStudent("Charlie");
+
+        System.out.println("After adding students:");
+        manager.displayStudents();
+
+        manager.removeStudent("Bob");
+
+        System.out.println("After removing a student:");
+        manager.displayStudents();
+    }
+}

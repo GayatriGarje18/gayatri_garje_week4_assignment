@@ -1,0 +1,51 @@
+class CustomException extends Exception {
+    public CustomException(String message) {
+        super(message);
+    }
+}
+
+public class ExceptionHandlingExample {
+
+    public static void main(String[] args) {
+        try {
+            int result = divide(10, 0);
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Caught ArithmeticException: " + e.getMessage());
+        }
+
+        try {
+            String value = null;
+            printLength(value);
+        } catch (NullPointerException e) {
+            System.out.println("Caught NullPointerException: " + e.getMessage());
+        }
+
+        try {
+            throwCustomException();
+        } catch (CustomException e) {
+            System.out.println("Caught CustomException: " + e.getMessage());
+        }
+
+        try {
+            int[] array = new int[5];
+            System.out.println(array[10]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Caught ArrayIndexOutOfBoundsException: " + e.getMessage());
+        } finally {
+            System.out.println("This block always executes.");
+        }
+    }
+
+    public static int divide(int a, int b) throws ArithmeticException {
+        return a / b;
+    }
+
+    public static void printLength(String str) throws NullPointerException {
+        System.out.println("Length: " + str.length());
+    }
+
+    public static void throwCustomException() throws CustomException {
+        throw new CustomException("This is a custom exception.");
+    }
+}

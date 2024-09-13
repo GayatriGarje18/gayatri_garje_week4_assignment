@@ -1,0 +1,51 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class EmployeeManager {
+
+    private HashMap<Integer, String> employees;
+
+    public EmployeeManager() {
+        employees = new HashMap<>();
+    }
+
+    public void addEmployee(int id, String name) {
+        employees.put(id, name);
+    }
+
+    public void removeEmployee(int id) {
+        employees.remove(id);
+    }
+
+    public String getEmployee(int id) {
+        return employees.get(id);
+    }
+
+    public void displayEmployees() {
+        if (employees.isEmpty()) {
+            System.out.println("No employees in the list.");
+        } else {
+            for (Map.Entry<Integer, String> entry : employees.entrySet()) {
+                System.out.println("ID: " + entry.getKey() + ", Name: " + entry.getValue());
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        EmployeeManager manager = new EmployeeManager();
+
+        manager.addEmployee(1, "John Doe");
+        manager.addEmployee(2, "Jane Smith");
+        manager.addEmployee(3, "Alice Johnson");
+
+        System.out.println("Employee List:");
+        manager.displayEmployees();
+
+        System.out.println("Employee with ID 2: " + manager.getEmployee(2));
+
+        manager.removeEmployee(2);
+
+        System.out.println("Employee List after removal:");
+        manager.displayEmployees();
+    }
+}
